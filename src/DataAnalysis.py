@@ -606,7 +606,7 @@ def plot_doubleXY_Mean(X, cols_h=None, cols_v=None, Y_cont=None, Y_cate=None, fe
         cuts[key]=np.sort(np.unique(cuts[key]))
     q_default=[10*i for i in range(1,10)]
     #先对连续型变量离散化
-    feature_cont=[col for col in cols_v+cols_h if col not in feature_cate]
+    feature_cont=set([col for col in cols_v+cols_h if col not in feature_cate])
     if len(feature_cont)>0:
         for column in feature_cont:
             clf = discretize.QuantileDiscretizer(quantiles=quantiles.get(column, q_default), return_numeric=False,
